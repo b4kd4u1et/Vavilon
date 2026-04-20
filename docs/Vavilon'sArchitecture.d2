@@ -14,6 +14,27 @@ vavilon: Vavilon {
          |--proto.d/
          |--cipher
          |--cipher.d/
+         |--srv-modules/
+            |--conf
+            |--conf.d/
+               |--core/
+               |--stat/
+               |--monitor/
+               |--ctrl-panel/
+            |--gui
+            |--gui.d/
+               |--ctrl-panel/
+               |--stat/
+               |--monitor/
+            |--logical
+            |--logical.d/
+               |--core/
+               |--ctrl-panel/
+               |--stat/
+               |--monitor/
+         |--clnt-modules/
+         |--modules
+         |--Vavilon.py
     `| {shape: code; grid-rows: 1}
 
     grid-columns: 2
@@ -27,5 +48,7 @@ vavilon: Vavilon {
   srv: Server {
   }
 
-  clnt: Client
+  clnt: Client {
+  }
+
 }
