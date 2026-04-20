@@ -6,28 +6,26 @@ vars: {
 }
 
 vavilon: Vavilon {
-  srv: Server {
-    fs: Files Structure {
-      |`code
-       /var/
-       |--vavilon/
-          |--proto
-          |--proto.d/
-          |--cipher
-          |--cipher.d/
-      `| {shape:code}
-  
-      proto: Protocols {
-        protofile: proto {
-        }
-      }
+  files: FS {
+    fs: |`code
+      /var/
+      |--vavilon/
+         |--proto
+         |--proto.d/
+         |--cipher
+         |--cipher.d/
+    `| {shape: code; grid-rows: 1}
+
+    grid-columns: 2
+    proto: Protocols {
+      grid-columns: 1
+      protofile: proto
+      protod: proto.d/
     }
   }
 
-  clnt: Client {
+  srv: Server {
   }
 
+  clnt: Client
 }
-
-
-
