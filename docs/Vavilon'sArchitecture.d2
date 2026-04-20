@@ -1,0 +1,33 @@
+vars: {
+  d2-config: {
+    layout-engine: elk
+    theme-id: 200
+  }
+}
+
+vavilon: Vavilon {
+  srv: Server {
+    fs: Files Structure {
+      |`code
+       /var/
+       |--vavilon/
+          |--proto
+          |--proto.d/
+          |--cipher
+          |--cipher.d/
+      `| {shape:code}
+  
+      proto: Protocols {
+        protofile: proto {
+        }
+      }
+    }
+  }
+
+  clnt: Client {
+  }
+
+}
+
+
+
