@@ -1,7 +1,12 @@
 {}
-label: Hello Vavilon
--description: Vavilon connection init packets
--12*byte: 48 65 6c 6c 6f 56 61 76 69 6c 6f 6e
+label: Ethernet
+-description: Ethernet header
+-proto: ethernet
+
+label: HelloVavilon
+-description: Vavilon connection init sequence
 -2*nullbyte
--proto: tcp
+-12*byte: 48 65 6c 6c 6f 56 61 76 69 6c 6f 6e  #HelloVavilon
+-2*nullbyte
+label: 
 {}
