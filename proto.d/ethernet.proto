@@ -1,0 +1,59 @@
+{}
+label: Ethernet
+-description: Ethernet protocol
+-destination  #6*byte
+-source  #6*byte
+-type  #2*byte
+{}
+init mynic:6
+set mynic < getThisNICAddress()
+
+init destination:6
+set destination < getDestinationAddressFromPacket()
+
+init source:6
+set source < getSourceAddressFromPacket()
+
+init type:2
+set type < getTypeFromPacket()
+  
+if mynic == destination:
+  remove mynic
+
+
+
+  init ethernetDataStruct
+  get destination&source&type > writeEthernetDataToFile(ethernetDataStruct)
+
+  remove destination
+  remove source
+  remove type
+
+  write ethernetDataStruct > writeToNewFile()
+  remove ethernetDataStruct
+  
+  endif
+/\/\/\
+ethernetDataStruct:
+```
+Destination address: [0]
+Source address: [1]
+Type: [2]
+```
+______
+6*byte getThisNICAddress():
+  core.NICDriver.getNICInfo()
+
+6*byte getDestinationAddressFromPacket()&
+6*byte getSourceAddressFromPacket()&
+2*byte getTypeFromPacket():
+  switch parserFlag:
+    case parserFlag is b0  #If data from Server's port listner
+      core.ServerDriver.getDataFromPacket()
+    case parserFlag is b1  #If data from Protocol parser
+      this.getFromStack(14*byte)
+
+writeToNewFile():
+  core.FSDriver.newFile(fileName)
+  core.FSDriver.writeToFile(fileName)
+{}
